@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #66ccff;
+            padding: 50px;
+        }
+        h1 {
+            color: #EE0000;
+            font-size: 3em;
+        }
+        #runtime {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ling</h1>
+    <div id="runtime">已运行: <span id="time"></span></div>
+
+    <script>
+
+        const startDate = new Date("2025-04-12T20:00:00");
+        
+        function updateRuntime() {
+            const now = new Date();
+            const diff = now - startDate;
+            
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+
+            document.getElementById("time").innerHTML = 
+                `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+        }
+        
+
+        updateRuntime();
+        setInterval(updateRuntime, 1000);
+    </script>
+</body>
+</html>
